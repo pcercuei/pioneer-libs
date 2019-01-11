@@ -4,6 +4,6 @@ install:
     - C:\msys64\usr\bin\bash -l /c/projects/pioneer-libs/install.sh
 
 build_script:
-    - cd C:\
-    - 7z a "C:\pioneer-deps.zip" "Pioneer"
+    - cd C:\build
+    - 7z a "C:\pioneer-deps.zip" "mingw64"
     - appveyor PushArtifact C:\pioneer-deps.zip

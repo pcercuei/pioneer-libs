@@ -21,6 +21,5 @@ cd /c/build
 	mingw-w64-x86_64-libsigc++
 for i in /var/cache/pacman/pkg/*.tar.xz; do tar xJf $i; rm $i; done
 
-mv /c/build/mingw64 /c/Pioneer
-cp /c/projects/pioneer-libs/SDL_config_windows.h /c/Pioneer/include/SDL2/SDL_config.h
-cp /mingw64/x86_64-w64-mingw32/lib/libmingw32.a /c/Pioneer/lib/mingw32.lib
+cp /c/projects/pioneer-libs/SDL_config_windows.h /c/build/mingw64/include/SDL2/SDL_config.h
+cp /mingw64/x86_64-w64-mingw32/lib/libmingw32.a /c/build/mingw64/lib/mingw32.lib
