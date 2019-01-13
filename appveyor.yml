@@ -68,6 +68,8 @@ build_script:
     - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% ..
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
+    - copy /B C:\msys64\mingw64\bin\pkg-config.exe C:\pioneer-deps\bin\pkg-config.exe
+
     - cd C:\
     - 7z a "C:\pioneer-deps.zip" "pioneer-deps"
     - appveyor PushArtifact C:\pioneer-deps.zip
