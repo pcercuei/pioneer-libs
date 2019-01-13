@@ -26,3 +26,6 @@
 	path = SDL_image
 	url = git://github.com/pcercuei/SDL_image_cmake.git
 	branch = install
+[submodule "freetype2"]
+	path = freetype2
+	url = https://git.savannah.gnu.org/git/freetype/freetype2.git

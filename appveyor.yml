@@ -70,6 +70,12 @@ build_script:
     - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% %CMAKE_EXTRA_ARGS% -DENABLE_JPG:BOOL=OFF -DENABLE_TIF:BOOL=OFF ..
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
+    - mkdir C:\projects\pioneer-libs\freetype2\build
+    - cd C:\projects\pioneer-libs\freetype2\build
+
+    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% %CMAKE_EXTRA_ARGS% ..
+    - cmake --build . --config %CONFIGURATION% --target INSTALL
+
     - cd "C:\sysroot\\Program Files"
     - 7z a "C:\pioneer-deps.zip" "Pioneer"
     - appveyor PushArtifact C:\pioneer-deps.zip
