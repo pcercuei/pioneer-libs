@@ -68,6 +68,8 @@ build_script:
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
     - copy /B C:\msys64\mingw64\bin\pkg-config.exe C:\pioneer-deps\bin\pkg-config.exe
+    - copy /A C:\projects\pioneer-libs\sdl2.pc C:\pioneer-deps\lib\pkgconfig\sdl2.pc
+    - copy /A C:\projects\pioneer-libs\SDL2_image.pc C:\pioneer-deps\lib\pkgconfig\SDL2_image.pc
 
     - cd C:\
     - 7z a "C:\pioneer-deps.zip" "pioneer-deps"
