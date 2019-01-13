@@ -6,8 +6,8 @@ platform:
 
 environment:
     global:
-        DESTDIR: C:\sysroot
-        CMAKE_ARGS: -DCMAKE_FIND_ROOT_PATH="C:\sysroot" -DCMAKE_INSTALL_PREFIX="C:\Program Files\Pioneer" -DBUILD_SHARED_LIBS=ON -DCMAKE_GENERATOR_TOOLSET="host=x64"
+        DESTDIR: C:\pioneer-deps
+        CMAKE_ARGS: -DCMAKE_FIND_ROOT_PATH="C:\pioneer-deps" -DCMAKE_PREFIX_PATH="C:\pioneer-deps" -DCMAKE_INSTALL_PREFIX="" -DBUILD_SHARED_LIBS=ON -DCMAKE_GENERATOR_TOOLSET="host=x64"
 
 install:
     git submodule update --init --jobs 2
@@ -68,6 +68,6 @@ build_script:
     - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% ..
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
-    - cd "C:\sysroot\\Program Files"
-    - 7z a "C:\pioneer-deps.zip" "Pioneer"
+    - cd C:\
+    - 7z a "C:\pioneer-deps.zip" "pioneer-deps"
     - appveyor PushArtifact C:\pioneer-deps.zip
