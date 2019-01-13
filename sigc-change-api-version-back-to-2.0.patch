@@ -1,0 +1,26 @@
+From c8f422a4e3582f94b5819ef9b98d0907d1b72762 Mon Sep 17 00:00:00 2001
+From: Paul Cercueil <paul@crapouillou.net>
+Date: Sun, 13 Jan 2019 16:06:04 -0300
+Subject: [PATCH] Change API version back to 2.0
+
+Signed-off-by: Paul Cercueil <paul@crapouillou.net>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d8d56b2..f3dcbc6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,7 @@ set (SIGCXX_MAJOR_VERSION 2)
+ set (SIGCXX_MINOR_VERSION 99)
+ set (SIGCXX_MICRO_VERSION 1)
+ 
+-set (SIGCXX_API_VERSION 3.0)
++set (SIGCXX_API_VERSION 2.0)
+ set (PACKAGE_VERSION ${SIGCXX_MAJOR_VERSION}.${SIGCXX_MINOR_VERSION}.${SIGCXX_MICRO_VERSION})
+ set (LIBSIGCPP_SOVERSION 0)
+ 
+-- 
+2.11.0
+

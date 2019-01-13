@@ -21,6 +21,7 @@ build_script:
     - cd C:\projects\pioneer-libs\libsigc++
 
     - git apply ../sigc-Fix-CMake-error-on-Windows.patch
+    - git apply ../sigc-change-api-version-back-to-2.0.patch
     - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% .
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
