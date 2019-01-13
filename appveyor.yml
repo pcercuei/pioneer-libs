@@ -26,7 +26,6 @@ build_script:
 
     - cd C:\projects\pioneer-libs\libpng
 
-    - git apply ../libpng-no-asm-compiler.patch
     - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% -DPNG_STATIC=OFF -DPNG_TESTS=OFF -DPNG_HARDWARE_OPTIMIZATIONS=OFF -DPNG_INTEL_SSE=OFF .
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
