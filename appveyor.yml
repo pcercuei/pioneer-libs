@@ -7,15 +7,7 @@ platform:
 environment:
     global:
         DESTDIR: C:\sysroot
-        CMAKE_ARGS: -DCMAKE_FIND_ROOT_PATH="C:\sysroot" -DCMAKE_INSTALL_PREFIX="C:\Program Files\Pioneer" -DBUILD_SHARED_LIBS=ON
-    matrix:
-        - PLATFORM: x86
-          CMAKE_EXTRA_ARGS:
-        - PLATFORM: x64
-          CMAKE_EXTRA_ARGS: -DCMAKE_GENERATOR_TOOLSET="host=x64"
-
-matrix:
-    fast_finish: true
+        CMAKE_ARGS: -DCMAKE_FIND_ROOT_PATH="C:\sysroot" -DCMAKE_INSTALL_PREFIX="C:\Program Files\Pioneer" -DBUILD_SHARED_LIBS=ON -DCMAKE_GENERATOR_TOOLSET="host=x64"
 
 install:
     git submodule update --init --jobs 2
@@ -23,57 +15,57 @@ install:
 build_script:
     - cd C:\projects\pioneer-libs\zlib
 
-    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% %CMAKE_EXTRA_ARGS% .
+    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% .
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
     - cd C:\projects\pioneer-libs\libsigc++
 
     - git apply ../sigc-Fix-CMake-error-on-Windows.patch
-    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% %CMAKE_EXTRA_ARGS% .
+    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% .
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
     - cd C:\projects\pioneer-libs\libpng
 
     - git apply ../libpng-no-asm-compiler.patch
-    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% %CMAKE_EXTRA_ARGS% -DPNG_STATIC=OFF -DPNG_TESTS=OFF -DPNG_HARDWARE_OPTIMIZATIONS=OFF -DPNG_INTEL_SSE=OFF .
+    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% -DPNG_STATIC=OFF -DPNG_TESTS=OFF -DPNG_HARDWARE_OPTIMIZATIONS=OFF -DPNG_INTEL_SSE=OFF .
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
     - cd C:\projects\pioneer-libs\assimp
 
-    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% %CMAKE_EXTRA_ARGS% -DASSIMP_BUILD_ASSIMP_TOOLS=OFF -DASSIMP_BUILD_TESTS=OFF .
+    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% -DASSIMP_BUILD_ASSIMP_TOOLS=OFF -DASSIMP_BUILD_TESTS=OFF .
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
     - cd C:\projects\pioneer-libs\curl
 
-    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% %CMAKE_EXTRA_ARGS% -DBUILD_CURL_EXE=OFF -DHTTP_ONLY=ON -DBUILD_TESTING=OFF .
+    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% -DBUILD_CURL_EXE=OFF -DHTTP_ONLY=ON -DBUILD_TESTING=OFF .
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
     - cd C:\projects\pioneer-libs\libogg
 
-    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% %CMAKE_EXTRA_ARGS% .
+    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% .
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
     - cd C:\projects\pioneer-libs\libvorbis
 
-    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% %CMAKE_EXTRA_ARGS% .
+    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% .
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
     - mkdir C:\projects\pioneer-libs\SDL2\build
     - cd C:\projects\pioneer-libs\SDL2\build
 
-    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% %CMAKE_EXTRA_ARGS% -DDUMMYAUDIO=OFF -DVIDEO_DUMMY=OFF -DVIDEO_OPENGLES=OFF ..
+    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% -DDUMMYAUDIO=OFF -DVIDEO_DUMMY=OFF -DVIDEO_OPENGLES=OFF ..
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
     - mkdir C:\projects\pioneer-libs\SDL_image\build
     - cd C:\projects\pioneer-libs\SDL_image\build
 
-    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% %CMAKE_EXTRA_ARGS% -DENABLE_JPG:BOOL=OFF -DENABLE_TIF:BOOL=OFF ..
+    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% -DENABLE_JPG:BOOL=OFF -DENABLE_TIF:BOOL=OFF ..
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
     - mkdir C:\projects\pioneer-libs\freetype2\build
     - cd C:\projects\pioneer-libs\freetype2\build
 
-    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% %CMAKE_EXTRA_ARGS% ..
+    - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% ..
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
     - cd "C:\sysroot\\Program Files"
