@@ -12,7 +12,8 @@
 	url = git://github.com/curl/curl.git
 [submodule "libsigc++"]
 	path = libsigc++
-	url = git://github.com/GNOME/libsigcplusplus.git
+	url = git://github.com/libsigcplusplus/libsigcplusplus.git
+	branch = libsigc++-2.10
 [submodule "libpng"]
 	path = libpng
 	url = git://git.code.sf.net/p/libpng/code
