@@ -13,12 +13,13 @@ install:
     git submodule update --init --jobs 2
 
 build_script:
+    - '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"'
+
     - cd C:\projects\pioneer-libs\zlib
 
     - cmake -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% %CMAKE_ARGS% .
     - cmake --build . --config %CONFIGURATION% --target INSTALL
 
-    - '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
     - cd C:\projects\pioneer-libs\libsigc++\MSVC_NMake
     - nmake /f Makefile.vc CFG=release PREFIX=C:\pioneer-deps install
 
